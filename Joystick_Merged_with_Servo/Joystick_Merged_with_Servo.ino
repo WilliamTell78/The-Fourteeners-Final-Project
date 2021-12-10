@@ -62,10 +62,10 @@ void loop() {
   //Pressing the Joystick Triggers the kick
   if (SW_state == 0){
     //Move the Servo back to 20 degrees
-    Servo1.write(20);
-    delay(1000);
+    Servo1.write(30);
+    delay(500);
     //Move the Servo to 160 degrees
-    Servo1.write(160);
+    Servo1.write(200);
     delay(1000);
   }
   

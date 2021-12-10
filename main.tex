@@ -60,8 +60,12 @@ Kapoor, Khushi\linebreak
 \section{ABSTRACT}
 Will
 Will-Also put and format images into project.
-This is your abstract.  It is a short summary of what your report will cover.  You should keep your abstract to 250 words or less.  Use this to ``hook in'' your reader.
-
+This year the students of AerE 361 were tasked with solving a problem using a circuit playground express(CPX) board.
+For many of us, this was the first time working and testing hardware while simultaneously working on its code. We originally
+were meant to be exposed to this during freshman year with the butter tray robots, but unfortunately COVID put a lid on that.
+Our group `The Fourteeners' wanted to have some fun with the project so we took a real life concern for a modern day soccer player
+and shrunk it down to LEGO size. Below we will walk through what exactly we solved using the CPX and how we went about doing so.
+There will also be a reflection section where we talk about the status, lessons learned, our results, and things moving forward.
 \section{INTRODUCTION}
 Khushi
 The introduction is where you will introduce your group and your project. List out the team members (optionally include a picture) and what their role is. Briefly introduce your project, what it does and why. A minimum of 2 paragraphs. Introduction is worth 5 points.
@@ -73,7 +77,28 @@ The features section is where you will outline the final list of features that y
 
 \section{PROBLEM STATEMENT}
 Will
-Your problem statement is stating what the problem(s) that you are attempting to solve. Again, this should not be a copy and paste from your proposal. State the problem and why you are solving it. This should be backed up with some light research. You may use the same references from your proposal, but if you done some more research since then, include additional citations as well. This section is worth 10 points.
+Like we said above, our group wanted to have some fun with the project. We took the real 
+life soccer player Lionel Messi and looked at his penalty kick percentage. According to the statistics reported by
+Michel Acosta(reference) we saw that he had missed 22 percent of his shots. Not neccessarily amazing for the superstar, and not to mention
+there's always been a question about who's the best player; Ronaldo or Messi? Currently Ronaldo has
+the better shooting percentage for penalty kicks sitting at 83 percent. In order to change that our group
+needed to provide Messi with a way to not only practice his penalty kicks, but efficiently choose where to place them
+in order to score. Additionally, lets say we want to make this universal, for other players. We needed to create a
+feedback system to the let the kicker know the liklieness of scoring on a goalie.
+
+The problem we are solving is that Mr. Messi has been struggling with penalty kicks. According to the website `instatsport'\cite{Penalty_stats},
+out of all the penalty kicks taken, 25 percent of them didn't result in a goal. Messi's recent kicks place his performance in that 25 percent. Our 
+job is to acquire data for the best scoring locations and provide Messi with these targets. He will practice his shooting, aiming at the targets we 
+provide in the goal while we display the improvement or likelihood of scoring. This will be achieved using multiple servos and a joystick. The joystick 
+will be connected via the USB port and give commands to the servos. The servos will move in a similar way that we use our hands to control a Foosball player. 
+The website Maker Pro\cite{maker.pro} has a really good tutorial on how to do this using an Arduino Uno. This is a little bit different because it uses pins 
+and wiring. We are gonna try and save slots on the CPX and use the USB port as mentioned earlier. The way we will measure his scoring ability is using the 
+ultrasonic sensor on the CPX as well as an attached Square Force-Sensitive Resistor. There's also guides on the Adafruit\cite{Adafruit_Ultrasonic_Sensor} website 
+on connecting and setting up the ultrasonic sensor using a breadboard and four wires. The main task at hand for us will be how we set a specific distance away 
+from the CPX for the goal line. All of this culminates to add a counter we will show on a small LCD. The counter will display a couple of different cases. The first 
+case is that he scored. The second is that he scored and hit a target which we will have placed either in the corners, or dead center. We chose these locations based 
+off of a statistical heat map of likely goal locations during penalty shots. We found the article on `thestatszone'\cite{StatsZone.com}. This counter is how we measure 
+Messi's progress. 
 
 \section{PROBLEM SOLUTION}
 Delane
