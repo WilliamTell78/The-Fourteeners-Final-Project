@@ -58,8 +58,7 @@ Kapoor, Khushi\linebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{ABSTRACT}
-Will
-Will-Also put and format images into project.
+%Will-Also put and format images into project.
 This year the students of AerE 361 were tasked with solving a problem using a circuit playground express(CPX) board.
 For many of us, this was the first time working and testing hardware while simultaneously working on its code. We originally
 were meant to be exposed to this during freshman year with the butter tray robots, but unfortunately COVID put a lid on that.
@@ -85,30 +84,7 @@ Lastly, the neopixels on the CPX board served as our LEDs/7 segment display idea
 
 
 \section{PROBLEM STATEMENT}
-Will
-Like we said above, our group wanted to have some fun with the project. We took the real 
-life soccer player Lionel Messi and looked at his penalty kick percentage. According to the statistics reported by
-Michel Acosta(reference) we saw that he had missed 22 percent of his shots. Not neccessarily amazing for the superstar, and not to mention
-there's always been a question about who's the best player; Ronaldo or Messi? Currently Ronaldo has
-the better shooting percentage for penalty kicks sitting at 83 percent. In order to change that our group
-needed to provide Messi with a way to not only practice his penalty kicks, but efficiently choose where to place them
-in order to score. Additionally, lets say we want to make this universal, for other players. We needed to create a
-feedback system to the let the kicker know the liklieness of scoring on a goalie.
-
-The problem we are solving is that Mr. Messi has been struggling with penalty kicks. According to the website `instatsport'\cite{Penalty_stats},
-out of all the penalty kicks taken, 25 percent of them didn't result in a goal. Messi's recent kicks place his performance in that 25 percent. Our 
-job is to acquire data for the best scoring locations and provide Messi with these targets. He will practice his shooting, aiming at the targets we 
-provide in the goal while we display the improvement or likelihood of scoring. This will be achieved using multiple servos and a joystick. The joystick 
-will be connected via the USB port and give commands to the servos. The servos will move in a similar way that we use our hands to control a Foosball player. 
-The website Maker Pro\cite{maker.pro} has a really good tutorial on how to do this using an Arduino Uno. This is a little bit different because it uses pins 
-and wiring. We are gonna try and save slots on the CPX and use the USB port as mentioned earlier. The way we will measure his scoring ability is using the 
-ultrasonic sensor on the CPX as well as an attached Square Force-Sensitive Resistor. There's also guides on the Adafruit\cite{Adafruit_Ultrasonic_Sensor} website 
-on connecting and setting up the ultrasonic sensor using a breadboard and four wires. The main task at hand for us will be how we set a specific distance away 
-from the CPX for the goal line. All of this culminates to add a counter we will show on a small LCD. The counter will display a couple of different cases. The first 
-case is that he scored. The second is that he scored and hit a target which we will have placed either in the corners, or dead center. We chose these locations based 
-off of a statistical heat map of likely goal locations during penalty shots. We found the article on `thestatszone'\cite{StatsZone.com}. This counter is how we measure 
-Messi's progress. 
-
+We took the real life soccer player Lionel Messi and looked at his penalty kick percentage. According to the statistics reported by Michel Acosta\cite{michelacosta} we saw that he had missed 22 percent of his shots. Not necessarily amazing for the superstar, and not to mention there's always been a question about who's the best player; Ronaldo or Messi? Currently Ronaldo has the better shooting percentage for penalty kicks sitting at 83 percent. In order to change that our group needed to provide Messi with a way to not only practice his penalty kicks, but efficiently choose where to place them in order to score.Using more stats provided by `thestatszone'\cite{StatsZone.com} we figure out where to make the targets to provide a better estimate too our solution. Additionally, lets say we want to make this universal, for other players. We needed to create a feedback system to the let the kicker know the liklieness of scoring on a goalie. This is where the targets and stats come into play.
 
 \section{PROBLEM SOLUTION}%%%%%%%%%%% DELANE START HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Here, you go into detail what your solution to the problem is.  I expect that this will have several subsections and you should breakout each area.  You should include any graphics and pictures as relevant as well and reference them like Figure \ref{fig:cpx}.
@@ -226,6 +202,7 @@ Finally, wrap up your report. Although there is no points here, it is expected.
 
 \section{SOURCE CODE}
 Alex-Put code in
-Source Code
-\lstinputlisting[language=Arduino]{src/demo.ino}
+Source Code CPX1- Servo and Joystick
+Source Code CPX2- Ultrasonic and Pressure Sensors
+\lstinputlisting[language=Arduino]{Joystick_Merged_with_Servo/Joystick_Merged_with_Servo.ino}
 \end{document}
