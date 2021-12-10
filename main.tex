@@ -71,8 +71,17 @@ Khushi
 The introduction is where you will introduce your group and your project. List out the team members (optionally include a picture) and what their role is. Briefly introduce your project, what it does and why. A minimum of 2 paragraphs. Introduction is worth 5 points.
 
 \section{FEATURES}
-Khushi
-The features section is where you will outline the final list of features that your device ended up with. This should not be a copy from proposal and I expect that some minor changes may have happened. If you did need to make a change, include what those changes were and why. You can do an itemized list of your features, but you must have a supporting paragraph or two that goes into further detail. This section is worth 5 points.
+There were 5 main features that were used for our project. This list of features changed drastically throughout the semester. The few other components we were originally hoping to have in the project were a 7-segment display, possibly using LEDs, and even the possibility of using another servo to control lateral movement of the kicker. 
+
+The first step in our project is using a joystick to control Messi's kick. Instead of using it is a joystick however, we used the push sensor capability to automate the kick. The code for this was quite simple and was connected to the movement of the servo. 
+
+Next, the servo was also a main feature of our project. As mentioned above, it controlled the kick by the push on the joystick. We originally did some research into which type of servo we would be needing to use. Even after our research, and trying to see what different setting in our code we could use, we were still running into some issues with the power of the kick so we ended up using some fishing wire to create some torque. 
+
+The third component was the ultrasonic sensor. This sensor was placed at the goal line to detect whether or not the ball went inside the goal. This was a part of our original plan and we are glad it ended up working. We originally had to do some adjustments to make the sensor sensitive enough to pickup the ball moving in front of it. 
+
+The pressure sensors were also an original part of our idea. We placed a pressure sensor in each corner of the goal. This is where a soccer player is most likely to score a goal, according to our research. We did a lot of research and adjustments to try and make these two sensors more sensitive as well, and found that changing the resistance really worked. 
+
+Lastly, the neopixels on the CPX board served as our LEDs/7 segment display idea. Since we were not able to incorporate them due to a shortage of pin connections, we resorted to using the neopixels. As described in the solution, we used different use cases to light up the board with different colors. 
 
 
 \section{PROBLEM STATEMENT}
@@ -100,28 +109,90 @@ case is that he scored. The second is that he scored and hit a target which we w
 off of a statistical heat map of likely goal locations during penalty shots. We found the article on `thestatszone'\cite{StatsZone.com}. This counter is how we measure 
 Messi's progress. 
 
-\section{PROBLEM SOLUTION}
-Delane
-Here, you go into detail what your solution to the problem is.  I expect that this will have several subsections and you should breakout each area.  You should include any graphics and pictures as relevant as well and reference them like Figure \ref{fig:cpx}.
+
+\section{PROBLEM SOLUTION}%%%%%%%%%%% DELANE START HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here, you go into detail what your solution to the problem is.  I expect that this will have several subsections and you should breakout each area.  You should include any graphics and pictures as relevant as well and reference them like Figure \ref{fig:cpx}.
+
+%\begin{itemize}
+%    \item How did you come up with your solution
+%    \item How did you test or verify your solution
+%    \item Do you think this was a good solution?
+%    \item Show as much as you can of the solution in action (pictures and/or data)
+%\end{itemize}
+
+Our solution was to create a penalty kick simulator for Messi to practice kicks. Messi would use our device to shoot a ball into the goal and it gives feedback on the likeliness that the ball would score based on real FIFA stats. The more that Messi practiced kicks, he would learn good places to aim for his penatly kicks. Our project was split into two areas of control, each with their own Circuit Playground Express(CPX) board. One CPX board controlled the servo to actuate the kick and the joystick to command the kick. The other CPX relayed information from two pressure sensors and an ultrasonic sensor to the on-board LEDs to display the kick accuracy. We Used two CPX boards because one didn't have enough pin outs to control all of the hardware we were using. Below in each section gives further detail on how each CPX is set up. 
+
+\subsection{Kicking control CPX}
+
+A two axis joystick was used to start the kicking action with a downward button press. The original idea was to have the joystick move the kicker left and right, similar to a Foosball Table. The other axis on the joystick was going to be used to adjust the kicking power. However, due to time and hardware constraints we were not able to implement them in the final design. The joystick ended up only needed one pin out for the button press. Below in Figure \ref{fig:left} you can see the joystick near the bottom of the image plugged in to the bread board. 
+
+This CPX also controlled a position servo to give the figure his kicking action. We had also planned to use a second servo to have the kicker slide side to side to try different kick positions, but was not implemented for the same reasons stated above. The servo that was connected to the kicker was given mechanical advantage by using a small string to rotate the kicker faster than the rotation of the servo.The servo would be actuated by a press of the joystick described above. One limitation we found of our final design is that the servo was not as quick as we wanted. Below in Figure \ref{fig:left} you can see the servo attached to the rotating kick dowel with an enhanced outline of the string (white lines).
+
 \begin{figure}[!t]
 \centering
-\includegraphics[width=4.5in]{cpx01.jpg}
-\caption{This is the circuit playground express}
-\label{fig:cpx}
+\includegraphics[width=4.5in]{project_left.jpg}
+\caption{Left side of project}
+\label{fig:left}
 \end{figure}
 
-Again, cite any sources that you have.  If you took snippets of code or found a paper that discusses on how to do something, then you need to cite it. The same if you got inspiration for code from a source, cite that as well. For this final project report, I am expecting at least 3 sources cited.  One will probably be what you had in your problem statement from your proposal.  
 
-Your problem solution is one of the largest things we look at. I am looking for the following items:
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=4.5in]{cpx01.jpg}
+%\caption{This is the circuit playground express}
+%\label{fig:cpx}
+%\end{figure}
 
-\begin{itemize}
-    \item How did you come up with your solution
-    \item How did you test or verify your solution
-    \item Do you think this was a good solution?
-    \item Show as much as you can of the solution in action (pictures and/or data)
-\end{itemize}
+\subsection{Kick scoring CPX}
 
-For this reason, this section has the most points at 25 points
+This CPX controlled the ultrasonic sensor, two pressure sensors, and the LED feedback systems. The ultrasonic sensor detected movement across the goal line and was able to recognize that a ball had crossed in its path. The pressure sensors were placed in the lower left and right corners of the goal. The pressure sensors were also sensitive enough to detect a quick moving kick and a slow moving kick ball. 
+
+\subsubsection{Sensors used}
+
+The ultrasonic sensor was able to detect the ball crossing into the goal by sending out a high frequency sound and listening for the reflection of the sound and timing the difference between the sent and received signal. We calibrated the sensor with the known distance across the goal. then we used an If statement in our code that if the received signal was shorter than the goal, then it considered the ball as a goal. We were able to get it working by referencing the website tutorials point \cite{tutorialspoint}. %put bib ref here 
+
+The pressure sensors were able to detect a hit by bending from the ball pressing on the free end of the sensor. The sensors we used were Force Sensitive Resistor (FSR). We were able to record the amount of pressure detected and used a cutoff point between when the FSR detected a quick kick and a slow kick. The quicker kick of course created higher pressure. We found a helpful resource on Adafruit's website on how to code and wire the hardware for the FSR \cite{Adafruit}. %put bib ref here 
+
+
+\subsubsection{Score Conditions}
+If the ball passed into the goal without hitting the pressure sensors on the sides, the LEDs would light up purple allowing Messi to know that his kick was placed in the center of the goal and likely to score. Above in Figure \ref{fig:left} you can see the LEDs are purple. If the ball hit one of the pressure sensors in the corner at a slow speed, the LEDs would turn yellow indicating that shot would be less than likely a goal. If the ball hit one of the pressure sensors at a high speed, the LEDs would illuminate green which would indicate a high chance of scoring the shot. 
+
+
+
+\subsection{Testing and Verification}
+
+\subsubsection{Ultrasonic}
+
+The ultrasonic sensor was tested with two different types of soccer balls. A small appropriately size Lego ball that matched the size as for the mini-figure and a much larger table tennis ball. Fortunately the sensor was able to pick up the reading from the smaller sized Lego ball. We hypothesized that the ball would be too small to be recognized by the ultrasonic sensor, however the sensor could accurately measure the small soccer ball's position. Another issue we hypothesized about the ultrasonic sensor was that it wouldn't be able to recognize the ball if it were moving too quickly. Yet again the sensor surprised us by recognizing the ball when it was rolled quite quickly into the goal. The ultrasonic sensor surpassed our expectations and worked quite well on testing.  
+
+\subsubsection{FSR}
+
+One early testing issue we had with the FSR was that it wasn't sensitive enough to take a reading of any ball kicked into it. It took a significant amount of force to get the smallest reading from it. We were able to work around the issue by adding more Resistance to the circuit by adding a resistor. Doing this allowed the FSR to take MUCH more sensitive readings thus, allowing us to not only read that the ball hit it, but to be able to differentiate the speed that the soccer ball hit it with. 
+
+\subsubsection{Solution effectiveness}
+
+We agreed that our solution to help Messi with his kicks would be effective on completion. We know that each of the systems on the CPX boards worked well, but only while independently. If we had a bit more time to work out the small issues, we would be sure that it would be an effective solution. The effectiveness of the solution we have so far is ineffective. The status of this project is further detailed in the next section. 
+
+%Again, cite any sources that you have.  If you took snippets of code or found a paper that discusses on how to do something, then you need to cite it. The same if you got inspiration for code from a source, cite that as well. For this final project report, I am expecting at least 3 sources cited.  One will probably be what you had in your problem statement from your proposal.  
+
+%Your problem solution is one of the largest things we look at. I am looking for the following items:
+
+%\begin{itemize}
+%    \item How did you come up with your solution
+%    \item How did you test or verify your solution
+%    \item Do you think this was a good solution?
+%    \item Show as much as you can of the solution in action (pictures and/or data)
+%\end{itemize}
+
+%For this reason, this section has the most points at 25 points
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END-DELANE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
 
 \section{STATUS}
 Alex
@@ -139,8 +210,7 @@ You must include a copy of your source code in the appendix.  There is an exampl
 
 
 \section{FUTURE WORK}
-Khushi
-Your future work includes what your team would continue to improve on and change if you had more time.  This could be expanding additional features or fixing something that you couldn't figure out.  It helps to explain at least a little on what you would plan to do to improve your product. This section is worth 5 points.
+As a team, we briefly discussed possible future work with Professor Nelson. As we described in our presentation, the 3 main things we would hope to work on are the mechanical structure of the soccer field, the servo motor used to kick, and the pressure sensors. For the structure of the field, we found that at times it was hard to recreate each kick due to the cardboard or maybe an imbalance in the field. This could be mitigated if we used a more sturdy field which was built from stronger materials and also made it a little bigger. Secondly, for the servo, we discussed possibly using a motor instead of a servo since that servo isn't really meant for a repetitive rotational motion and would have been better for maybe a translation motion. Lastly, we would work to see if we can do a calibration reset on the pressure sensors that averages the values it gets before every test so that it is calibrated and runs properly. 
 
 \section{CONCLUSION}
 Alex
